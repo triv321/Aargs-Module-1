@@ -2,8 +2,11 @@
   "name": "aarks",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/observer.js",
+  "type": "module",
   "scripts": {
+    "observe": "node src/observer.js",
+    "server": "node src/test-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
