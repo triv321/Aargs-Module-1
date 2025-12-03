@@ -4,11 +4,14 @@ import { logger } from './utils/logger.js';
 import { autoScroll } from './utils/scroll.js';
 import { extractDom } from './utils/extractDom.js';
 import { saveArtifacts } from './utils/saveArtifacts.js';
+import { fileURLToPath } from 'url';
 
 export async function runObserver(url = CONFIG.DEFAULT_URL) {
     logger.info(`Navigating to: ${url}`);
 
     // Launch a Chromium browser
+    // Note: We use headless: true if not specified, but let's stick to config or default.
+    // The original code had headless: false.
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
@@ -36,4 +39,17 @@ export async function runObserver(url = CONFIG.DEFAULT_URL) {
     } finally {
         await browser.close();
     }
+}
+
+// Check if the script is being run directly
+const __filename = fileURLToPath(import.meta.url);
+if (process.argv[1] === __filename) {
+    (async () => {
+        const url = process.argv[2];
+        try {
+            await runObserver(url);
+        } catch (error) {
+            process.exit(1);
+        }
+    })();
 }
