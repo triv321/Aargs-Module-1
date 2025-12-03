@@ -7,12 +7,15 @@
   "scripts": {
     "observe": "node src/observer.js",
     "server": "node src/test-server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "playwright": "^1.57.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
   }
 }
