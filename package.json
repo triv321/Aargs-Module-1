@@ -5,14 +5,18 @@
   "main": "src/observer.js",
   "type": "module",
   "scripts": {
-    "observe": "node src/observer.js",
+    "observe": "node src/cli.js",
     "server": "node src/test-server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "playwright": "^1.57.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0"
   }
 }
