@@ -5,7 +5,7 @@
   "main": "src/observer.js",
   "type": "module",
   "scripts": {
-    "observe": "node src/observer.js",
+    "observe": "node src/cli.js",
     "server": "node src/test-server.js",
     "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest"
   },
